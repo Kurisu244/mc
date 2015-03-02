@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Get Lost... by MicroLimn SoftWorks</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/jquery.scrollgress.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+		</noscript>
+		 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script>
+			var map;
+			function initialize() {
+				var mapOptions = {
+				zoom: 12,
+				center: new google.maps.LatLng(40.6500, 22.9000)
+			};
+			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="index.html">Get Lost...</a> by MicroLimn SoftWorks</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="explore.html">Explore</a></li>
+						<li>
+							<a href="" class="icon fa-angle-down">Recommended</a>
+							<ul>
+								<li><a href="generic.html">Top Landmarks</a></li>
+								<li><a href="#">Top Munchies</a></li>
+								<li><a href="#">Top Clubs</a></li>
+							</ul>
+						</li>
+						<li><a href="contact.html">Contact Us!</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<section id="banner">
+				<div>
+				</div>
+			</section>
+			
+		<!-- Main -->
+			<section id="main" class="container 75%">
+				<header>
+					<h2>Contact Us</h2>
+					<h1>Tell us what you think about our little operation.</h1>
+				</header>
+				<div class="box">
+					<form method="post" action="#">
+						<div class="row uniform 50%">
+							<div class="6u 12u(mobilep)">
+								<input type="text" name="name" id="name" value="" placeholder="Name" />
+							</div>
+							<div class="6u 12u(mobilep)">
+								<input type="email" name="email" id="email" value="" placeholder="Email" />
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+								<input type="text" name="subject" id="subject" value="" placeholder="Subject" />
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+								<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+							</div>
+						</div>
+						<div class="row uniform">
+							<div class="12u">
+								<ul class="actions align-center">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+					<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy;2015 MicroLimn SoftWorks. All rights reserved.</li>
+				</ul>
+			</footer>
+
+	</body>
+</html>

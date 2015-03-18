@@ -16,7 +16,7 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM PLACE WHERE PID = '$id'";
+		$query = "SELECT * FROM PLACES WHERE PID = '$id'";
 		$result = mysql_query($query);
 		$row = mysql_fetch_array($result);
       ?>
@@ -27,21 +27,21 @@
         <tr>        
           <td>Name:</td>
           <td>
-            <input type="text" name="pname" size="40" value="<?php echo "$row[NAME]"?>">
+            <input type="text" name="pname" size="40" value="<?php echo "$row[PNAME]"?>">
           </td>
         </tr>
 		
         <tr>
           <td>Description:</td>
           <td>
-			<textarea rows="10" cols="100" name="pdescription"><?php echo "$row[DESCRIPTION]"?></textarea>
+			<textarea rows="10" cols="100" name="pdescription"><?php echo "$row[PDESCRIPTION]"?></textarea>
           </td>
         </tr>
 		
 		<tr>
           <td>Type:</td>
           <td>
-            <input type="text" name="ptype" size="20" value="<?php echo "$row[TYPE]"?>">
+            <input type="text" name="ptype" size="20" value="<?php echo "$row[PTYPE]"?>">
           </td>
         </tr>
 		

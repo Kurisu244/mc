@@ -9,7 +9,7 @@
 	$host = '127.0.0.1';
 	$username = 'user';
 	$password = '';
-	$database = 'team3';
+	$database = 'team';
 	
 	$connection = new mysqli($host, $username, $password, $database);
 	
@@ -24,7 +24,7 @@
 		$pdescription = $_POST["pdescription"];
 		$ptype = $_POST["ptype"];
 
-        $queryString = "INSERT INTO PLACE (PID, NAME, DESCRIPTION, TYPE) VALUES ($pid, '$pname', '$pdescription', '$ptype')";
+        $queryString = "INSERT INTO PLACES (PID, PNAME, PDESCRIPTION, PTYPE) VALUES ($pid, '$pname', '$pdescription', '$ptype')";
     	if (!$connection->query($queryString))
 		{
 			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;

@@ -16,14 +16,14 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM PLACE";
+		$query = "SELECT * FROM PLACES";
 		$result = mysql_query($query);
 		echo "<tr> <th>Name</th> <th>Description</th> <th>Type</th></tr>";
 		while ($row = mysql_fetch_array($result))
 		{
-			echo ("<tr><td>$row[NAME]</td>");
-			echo ("<td>$row[DESCRIPTION]</td>");
-			echo ("<td>$row[TYPE]</td>");
+			echo ("<tr><td>$row[PNAME]</td>");
+			echo ("<td>$row[PDESCRIPTION]</td>");
+			echo ("<td>$row[PTYPE]</td>");
 			echo ('<td><a href="Edit_Form_Places.php?id=' . $row['PID'] . '">Edit</a></td>');
 			echo ('<td><a href="Delete_Data_Places.php?id=' .$row['PID'] . '">Delete</a></td>');
 		} 

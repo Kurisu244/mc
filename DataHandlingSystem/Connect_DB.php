@@ -2,7 +2,7 @@
 $host = '127.0.0.1';
 	$username = 'user';
 	$password = '';
-	$database = 'team';
+	$database = 'team3';
 
 $connection = mysql_connect($host, $username, $password) 
  or die ("Could not connect to server ... \n" . mysql_error ());

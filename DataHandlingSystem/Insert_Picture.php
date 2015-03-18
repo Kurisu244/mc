@@ -9,7 +9,7 @@
 	$host = '127.0.0.1';
 	$username = 'user';
 	$password = '';
-	$database = 'team';
+	$database = 'team3';
 	
 	$connection = new mysqli($host, $username, $password, $database);
 	

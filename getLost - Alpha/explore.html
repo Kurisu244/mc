@@ -1,35 +1,89 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Get Lost...</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script>
-var map;
-function initialize() {
-  var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(40.6500, 22.9000)
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-}
+	<head>
+		<title>Get Lost...</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<style>
+		  html, body, #map 
+		  {
+			height: 100%;
+			margin: 0px;
+			padding: 0px
+		  }
+		  img { width:100%; }
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
-google.maps.event.addDomListener(window, 'load', initialize);
+		<script>
+			function load()
+			{
+				var map = new google.maps.Map(document.getElementById("map"), 
+				{
+					center: new google.maps.LatLng(40.626369, 22.948428),
+					zoom: 12
+				});
+				var infoWindow = new google.maps.InfoWindow;
 
-    </script>
-  </head>
-  <body>
-    <div id="map-canvas"></div>
-  </body>
+				downloadUrl("/genxml.php", function(data)
+				{
+					var xml = data.responseXML;
+					var markers = xml.documentElement.getElementsByTagName("marker");
+					for (var i = 0; i < markers.length; i++)
+					{
+						var name = markers[i].getAttribute("name");
+						var description = markers[i].getAttribute("description");
+						var type = markers[i].getAttribute("type");
+						var link = markers[i].getAttribute("link");
+						var point = new google.maps.LatLng(
+							parseFloat(markers[i].getAttribute("lat")),
+							parseFloat(markers[i].getAttribute("lng")));
+						var content = "<b>" + name + "</b> <br/>" + "<i>" + type + "</i> <br/>" + description;
+						var marker = new google.maps.Marker(
+						{
+							map: map,
+							position: point,
+						});
+						bindInfoWindow(marker, map, infoWindow, content);
+					}
+				});
+			}
+		
+			function bindInfoWindow(marker, map, infoWindow, content) 
+			{
+				google.maps.event.addListener(marker, 'click', function() 
+				{
+					infoWindow.setOptions({maxWidth:250}); 
+					infoWindow.setContent(content);
+					infoWindow.open(map, marker);
+				});
+			}
+
+			function downloadUrl(url, callback) 
+			{
+				var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') :
+				new XMLHttpRequest;
+
+				request.onreadystatechange = function()
+				{
+					if (request.readyState == 4) 
+					{
+						request.onreadystatechange = doNothing;
+						callback(request, request.status);
+					}
+				};
+
+				request.open('GET', url, true);
+				request.send(null);
+			}
+
+			function doNothing() {}
+			
+		</script>
+	</head>
+		<body onload="load()">
+			<div id="map"></div>
+		</body>
 </html>
 

@@ -1,4 +1,4 @@
-
+﻿
 CREATE TABLE USERS (
  USERID           NUMERIC(4) NOT NULL,
  USERNAME         CHAR(16),
@@ -22,8 +22,8 @@ INSERT INTO USERS VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis'
  CREATE TABLE LOCATION (
  LID             NUMERIC(4) NOT NULL,
  PID             NUMERIC(4),
- LATITUDE        DOUBLE,
- LONGITUDE       DOUBLE,
+ LATITUDE        FLOAT(10,6),
+ LONGITUDE       FLOAT(10,6),
  CONSTRAINT LOCATION_PRIMARY_KEY PRIMARY KEY (LID),
  CONSTRAINT LOCATION_FOREIGN_KEY FOREIGN KEY (PID) REFERENCES PLACE (PID)
  ON DELETE CASCADE
@@ -69,7 +69,7 @@ INSERT INTO USERS VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis'
  INSERT INTO RATING VALUES (0004, 0004, 4);
  INSERT INTO PICTURE VALUES (0004, 0004, 'http://www.makthes.gr/filestore/modules/news/5/5/55912/1h.jpg');
  
- INSERT INTO PLACE VALUES (0005, "White Tower of Thessaloniki', 'The White Tower of Thessaloniki, is a monument 
+ INSERT INTO PLACE VALUES (0005, "White Tower of Thessaloniki", "The White Tower of Thessaloniki, is a monument 
  and museum on the waterfront of the city of Thessaloniki, capital of the region of Macedonia in northern Greece. 
  The present tower replaced an old Byzantine fortification which was mentioned around the 12th century and reconstructed 
  by the Ottomans to fortify the city's harbour; it became a notorious prison and scene of mass executions during the period of Ottoman rule.
@@ -100,9 +100,7 @@ INSERT INTO USERS VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis'
  INSERT INTO PICTURE VALUES (0008, 0008, 'http://media-cdn.tripadvisor.com/media/photo-s/05/54/df/c6/caption.jpg');
  
  INSERT INTO PLACE VALUES (0009, 'ALAKIOZIDIS RAFAIL', 'Venizelou Eleftheriou 38 Thessaloniki, P.C. 54624
-Municipality of Thessaloníkis, Prefecture of Thessaloníkis
-Tel.: +302310257769
-Fax: +302310257769', 'Pharmacy');
+Tel.: +302310257769 Fax: +302310257769', 'Pharmacy');
  INSERT INTO LOCATION VALUES (0009, 0009, 40.636227, 22.941308);
  INSERT INTO RATING VALUES (0009, 0009, 3);
  INSERT INTO PICTURE VALUES (0009, 0009, 'http://tinyurl.com/o4bzfxe');
@@ -114,7 +112,6 @@ Fax: +302310257769', 'Pharmacy');
  INSERT INTO PICTURE VALUES (0010, 0010, 'http://www.carepoint.gr/images/stories/logo.jpg');
  
  INSERT INTO PLACE VALUES (0011, 'EUROCHANGE HELLAS S.A.', 'Plateia Aristotelous 9 Thessaloniki, P.C. 54624
-Municipality of Thessalonikis, Prefecture of Thessalonikis
 Tel.: +302310265969', 'Money-Exchange');
  INSERT INTO LOCATION VALUES (0011, 0011,  40.633107, 22.941126);
  INSERT INTO RATING VALUES (0011, 0011, 4);

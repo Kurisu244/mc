@@ -1,10 +1,5 @@
 <?php
 
-$host = '127.0.0.1';
-$username = 'user';
-$password = '';
-$database = 'team4';
-
 function parseToXML($htmlStr)
 {
 	$xmlStr = str_replace('<','&lt;',$htmlStr);
@@ -15,20 +10,10 @@ function parseToXML($htmlStr)
 	return $xmlStr;
 }
 
-$connection = mysql_connect ($host, $username, $password);
-if (!$connection)
-{
-  die('Not connected : ' . mysql_error());
-}
+include "connect2.php";
 
-$db_selected = mysql_select_db($database, $connection);
-if (!$db_selected)
-{
-  die ('Can\'t use db : ' . mysql_error());
-}
-
-$query = "SELECT LATITUDE,LONGITUDE,NAME,DESCRIPTION,TYPE,STARS,LINK FROM LOCATION,PLACE,RATING,PICTURE
- WHERE LOCATION.PID = PLACE.PID AND RATING.PID = PLACE.PID AND PICTURE.PLID = PLACE.PID";
+$query = "SELECT LATITUDE,LONGITUDE,NAME,DESCRIPTION,TYPE,STARS,LINK FROM ARCLOCATION,ARCPLACE,ARCRATING,ARCPICTURE
+ WHERE ARCLOCATION.PID = ARCPLACE.PID AND ARCRATING.PID = ARCPLACE.PID AND ARCPICTURE.PLID = ARCPLACE.PID";
 $result = mysql_query($query);
 if (!$result)
 {

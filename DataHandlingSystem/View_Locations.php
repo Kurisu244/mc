@@ -16,7 +16,7 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM LOCATION";
+		$query = "SELECT * FROM ARCLOCATION";
 		$result = mysql_query($query);
 		echo "<tr> <th>Place ID</th> <th>Latitude</th> <th>Longitude</th></tr>";
 		while ($row = mysql_fetch_array($result))

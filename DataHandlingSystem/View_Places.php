@@ -16,7 +16,7 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM PLACE";
+		$query = "SELECT * FROM ARCPLACE";
 		$result = mysql_query($query);
 		echo "<tr> <th>Name</th> <th>Description</th> <th>Type</th></tr>";
 		while ($row = mysql_fetch_array($result))

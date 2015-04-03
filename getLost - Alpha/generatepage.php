@@ -14,15 +14,15 @@ if (isset($_POST['lat']) && isset($_POST['lng'])) {
 	$lat = strip_tags($_POST['lat']);
 	$lng = strip_tags($_POST['lng']);
 	
-	$query = $handler->query("SELECT PID FROM location
+	$query = $handler->query("SELECT PID FROM arclocation
 								WHERE LATITUDE LIKE '$lat' && LONGITUDE LIKE '$lng'");
 	
 	while ($r = $query->fetch())
 	{
 		$id = $r['PID'];
-		$query2 = $handler->query("SELECT place.PID,rating.PID,PLID, NAME, DESCRIPTION, TYPE, LINK, STARS
-								FROM place, picture, rating
-								WHERE place.PID = '$id' && place.PID = PLID && place.PID = rating.PID LIMIT 1");
+		$query2 = $handler->query("SELECT arcplace.PID,arcrating.PID,PLID, NAME, DESCRIPTION, TYPE, LINK, STARS
+								FROM arcplace, arcpicture, arcrating
+								WHERE arcplace.PID = '$id' && arcplace.PID = PLID && arcplace.PID = arcrating.PID LIMIT 1");
 		$query2->setFetchMode(PDO::FETCH_ASSOC);
 		
 		while($r2 = $query2->fetch())	

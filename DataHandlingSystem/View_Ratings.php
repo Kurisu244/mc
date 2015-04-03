@@ -16,7 +16,7 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM RATING";
+		$query = "SELECT * FROM ARCRATING";
 		$result = mysql_query($query);
 		echo "<tr> <th>Place ID</th> <th>Stars</th></tr>";
 		while ($row = mysql_fetch_array($result))

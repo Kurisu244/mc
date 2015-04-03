@@ -4,7 +4,7 @@
 <title>Edit Data</title>
 </head>
 
-<body background="pic01.jpg">
+<body>
 <table border=1>
   <tr>
     <td align=center>Edit Data</td>
@@ -16,7 +16,7 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM ARCPLACE WHERE PID = '$id'";
+		$query = "SELECT * FROM PLACE WHERE PID = '$id'";
 		$result = mysql_query($query);
 		$row = mysql_fetch_array($result);
       ?>

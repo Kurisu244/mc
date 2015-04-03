@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+	<head>
+		<title>Data Handling</title>
+	</head>
+	
+	<body background="pic01.jpg">
+		<h1>Insert information into the database</h1>
+			<form method="post" action="Insert_Place.php">
+			<fieldset>
+			<legend>Point of interest:</legend>
+			Place ID:<br>
+			<input type="text" name="pid" id="pid">
+			<br>
+			Name:<br>
+			<input name="pname" type="text" id="pname">
+			<br>
+			Description:<br>
+			<textarea rows="10" cols="100" name="pdescription"></textarea>
+			<br>
+			Type:<br>
+			<input name="ptype" type="text" id="ptype">
+			<br>
+			<br>
+			<input type="submit" value="Submit">
+			</fieldset>
+			</form> 
+			
+			<form method="post" action="Insert_Location.php">
+			<fieldset>
+			<legend>Location:</legend>
+			Place ID:<br>
+			<input type="text" name="pid_l" id="pid_l">
+			<br>
+			Location ID:<br>
+			<input name="lid" type="text" id="lid">
+			<br>
+			Latitude:<br>
+			<input name="latitude" type="text" id="latitude">
+			<br>
+			Longitude:<br>
+			<input name="longitude" type="text" id="longitude">
+			<br>
+			<br>
+			<input type="submit" value="Submit">
+			</fieldset>
+			</form> 
+			
+			<form method="post" action="Insert_Rating.php">
+			<fieldset>
+			<legend>Rating:</legend>
+			Place ID:<br>
+			<input type="text" name="pid_r" id="pid_r">
+			<br>
+			Rating ID:<br>
+			<input name="rid" type="text" id="rid">
+			<br>
+			Number of stars:<br>
+			<input name="stars" type="text" id="stars">
+			<br>
+			<br>
+			<input type="submit" value="Submit">
+			</fieldset>
+			</form> 
+			
+			<form method="post" action="Insert_Picture.php">
+			<fieldset>
+			<legend>Picture:</legend>
+			Place ID:<br>
+			<input type="text" name="pid_p" id="pid_p">
+			<br>
+			Picture ID:<br>
+			<input name="picid" type="text" id="picid">
+			<br>
+			URL:<br>
+			<input name="url" type="text" id="url">
+			<br>
+			<br>
+			<input type="submit" value="Submit">
+			</fieldset>
+			</form> 
+	
+	</body>
+
+</html>

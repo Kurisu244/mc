@@ -19,12 +19,12 @@
     }
     else
     {
-    	//$pid = $_POST["pid"];
+    	$pid = $_POST["pid"];
 		$pname = $_POST["pname"];
 		$pdescription = $_POST["pdescription"];
 		$ptype = $_POST["ptype"];
 
-        $queryString = "INSERT INTO ARCPLACE (NAME, DESCRIPTION, TYPE) VALUES ('$pname', '$pdescription', '$ptype')";
+        $queryString = "INSERT INTO PLACE (PID, NAME, DESCRIPTION, TYPE) VALUES ($pid, '$pname', '$pdescription', '$ptype')";
     	if (!$connection->query($queryString))
 		{
 			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;

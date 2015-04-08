@@ -24,7 +24,7 @@
 		$pdescription = $_POST["pdescription"];
 		$ptype = $_POST["ptype"];
 
-        $queryString = "INSERT INTO ARCPLACE (NAME, DESCRIPTION, TYPE) VALUES ('$pname', '$pdescription', '$ptype')";
+        $queryString = "INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('$pname', '$pdescription', '$ptype')";
     	if (!$connection->query($queryString))
 		{
 			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;

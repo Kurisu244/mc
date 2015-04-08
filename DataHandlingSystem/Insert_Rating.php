@@ -23,7 +23,7 @@
 		//$rid = $_POST["rid"];
 		$stars = $_POST["stars"];
 
-		$queryString = "INSERT INTO ARCRATING (PID, STARS) VALUES ($pid_r, $stars)";
+		$queryString = "INSERT INTO RATING (PID, STARS) VALUES ($pid_r, $stars)";
     	if (!$connection->query($queryString))
 		{
 			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;

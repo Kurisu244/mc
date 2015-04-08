@@ -16,7 +16,7 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM ARCRATING WHERE RID = '$id'";
+		$query = "SELECT * FROM RATING WHERE RID = '$id'";
 		$result = mysql_query($query);
 		$row = mysql_fetch_array($result);
       ?>

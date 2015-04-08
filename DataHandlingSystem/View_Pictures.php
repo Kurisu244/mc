@@ -16,7 +16,7 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM ARCPICTURE";
+		$query = "SELECT * FROM PICTURE";
 		$result = mysql_query($query);
 		echo "<tr> <th>Place ID</th> <th>URL</th></tr>";
 		while ($row = mysql_fetch_array($result))

@@ -16,7 +16,7 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM ARCLOCATION WHERE LID = '$id'";
+		$query = "SELECT * FROM LOCATION WHERE LID = '$id'";
 		$result = mysql_query($query);
 		$row = mysql_fetch_array($result);
       ?>

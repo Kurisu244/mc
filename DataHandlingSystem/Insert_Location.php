@@ -24,7 +24,7 @@
 		$latitude = $_POST["latitude"];
 		$longitude = $_POST["longitude"];
 		
-		$queryString = "INSERT INTO ARCLOCATION (PID, LATITUDE, LONGITUDE) VALUES ($pid_l, $latitude, $longitude)";
+		$queryString = "INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES ($pid_l, $latitude, $longitude)";
     	if (!$connection->query($queryString))
 		{
 			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;

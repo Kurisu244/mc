@@ -23,7 +23,7 @@
 		//$picid = $_POST["picid"];
 		$url = $_POST["url"];
 		
-		$queryString = "INSERT INTO ARCPICTURE (PLID, LINK) VALUES ($pid_p, '$url')";
+		$queryString = "INSERT INTO PICTURE (PLID, LINK) VALUES ($pid_p, '$url')";
     	if (!$connection->query($queryString))
 		{
 			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;

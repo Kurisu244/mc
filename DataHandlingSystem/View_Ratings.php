@@ -16,15 +16,16 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM RATING";
-		$result = mysql_query($query);
+		$query = $handler->query("SELECT * FROM RATING");
+		$query->setFetchMode(PDO::FETCH_ASSOC);	
+		
 		echo "<tr> <th>Place ID</th> <th>Stars</th></tr>";
-		while ($row = mysql_fetch_array($result))
+		while ($result = $query->fetch())
 		{
-			echo ("<tr><td>$row[PID]</td>");
-			echo ("<td>$row[STARS]</td>");
-			echo ('<td><a href="Edit_Form_Ratings.php?id=' . $row['RID'] . '">Edit</a></td>');
-			echo ('<td><a href="Delete_Data_Ratings.php?id=' .$row['RID'] . '">Delete</a></td>');
+			echo ("<tr><td>$result[PID]</td>");
+			echo ("<td>$result[STARS]</td>");
+			echo ('<td><a href="Edit_Form_Ratings.php?id=' . $result['RID'] . '">Edit</a></td>');
+			echo ('<td><a href="Delete_Data_Ratings.php?id=' .$result['RID'] . '">Delete</a></td>');
 		} 
       ?>
       </table>

@@ -1,12 +1,10 @@
 <?php
-$host = '127.0.0.1';
-$username = 'root';
-$password = '';
-$database = 'team4';
 
-$connection = mysql_connect($host, $username, $password) 
- or die ("Could not connect to server ... \n" . mysql_error ());
- mysql_select_db($database) 
- or die ("Could not connect to database ... \n" . mysql_error ());
-
+try {
+	$handler = new PDO('mysql:host=localhost;dbname=mclabs_arcdb','mclabs_arc','4arcdb%admin1');
+	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}catch(PDOException $e){
+		echo $e->getMessage();
+		die();
+	}
 ?>

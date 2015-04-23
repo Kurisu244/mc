@@ -16,32 +16,40 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM LOCATION WHERE LID = '$id'";
-		$result = mysql_query($query);
-		$row = mysql_fetch_array($result);
+
+		$query = $handler->query("SELECT * FROM LOCATION WHERE LID = '$id'");
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		
+		while($result = $query->fetch())
+		{
+			$lid = $result['LID'];
+			$pid = $result['PID'];
+			$latitude = $result['LATITUDE'];
+			$longitude = $result['LONGITUDE'];
+		}
       ?>
       <form method="post" action="Edit_Data_Locations.php">
 	  
-	  <input type="hidden" name="lid" size="4" value="<?php echo "$row[LID]"?>">
+	  <input type="hidden" name="lid" size="4" value="<?php echo $lid?>">
 	  
         <tr>        
           <td>Place ID:</td>
           <td>
-            <input type="text" name="pid" size="4" value="<?php echo "$row[PID]"?>">
+            <input type="text" name="pid" size="4" value="<?php echo $pid?>">
           </td>
         </tr>
 		
         <tr>
           <td>Latitude:</td>
           <td>
-            <input type="text" name="latitude" size="10" value="<?php echo "$row[LATITUDE]"?>">
+            <input type="text" name="latitude" size="10" value="<?php echo $latitude?>">
           </td>
         </tr>
 		
 		<tr>
           <td>Longitude:</td>
           <td>
-            <input type="text" name="longitude" size="10" value="<?php echo "$row[LONGITUDE]"?>">
+            <input type="text" name="longitude" size="10" value="<?php echo $longitude?>">
           </td>
         </tr>
 		

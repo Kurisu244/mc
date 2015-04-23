@@ -16,25 +16,33 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM PICTURE WHERE PID = '$id'";
-		$result = mysql_query($query);
-		$row = mysql_fetch_array($result);
+		
+		$query = $handler->query("SELECT * FROM PICTURE WHERE PLID = '$id'");
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		
+		while($result = $query->fetch())
+		{
+			$picid = $result['PICID'];
+			$plid = $result['PLID'];
+			$link = $result['LINK'];
+		}
+
       ?>
       <form method="post" action="Edit_Data_Pictures.php">
 	  
-		<input type="hidden" name="picid" size="4" value="<?php echo "$row[PICID]"?>">
+		<input type="hidden" name="picid" size="4" value="<?php echo $picid?>">
 	  
         <tr>        
           <td>Place ID:</td>
           <td>
-            <input type="text" name="plid" size="4" value="<?php echo "$row[PLID]"?>">
+            <input type="text" name="plid" size="4" value="<?php echo $plid?>">
           </td>
         </tr>
 		
         <tr>
           <td>URL:</td>
           <td>
-            <input type="text" name="link" size="80" value="<?php echo "$row[LINK]"?>">
+            <input type="text" name="link" size="80" value="<?php echo $link?>">
           </td>
         </tr>
 

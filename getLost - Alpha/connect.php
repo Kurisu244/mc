@@ -1,7 +1,7 @@
 <?php
 
 try {
-	$handler = new PDO('mysql:host=127.0.0.1;dbname=team4','root','');
+	$handler = new PDO('mysql:host=localhost;dbname=mclabs_arcdb','mclabs_arc','4arcdb%admin1');
 	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }catch(PDOException $e){
 		echo $e->getMessage();

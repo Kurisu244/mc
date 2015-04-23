@@ -6,33 +6,19 @@
 <body>
 
 <?php
-	$host = '127.0.0.1';
-	$username = 'user';
-	$password = '';
-	$database = 'team3';
-	
-	$connection = new mysqli($host, $username, $password, $database);
-	
-    if ($connection->connect_error)
-    {
-        echo "<p>Unable to establish a connection to the database:".$connection->connect_error."</p>";
-    }
-    else
-    {
+	include('Connect_DB.php');
 		$pid_r = $_POST["pid_r"];
 		//$rid = $_POST["rid"];
 		$stars = $_POST["stars"];
 
-		$queryString = "INSERT INTO RATING (PID, STARS) VALUES ($pid_r, $stars)";
-    	if (!$connection->query($queryString))
+		$query = $handler->query("INSERT INTO RATING (PID, STARS) VALUES ($pid_r, $stars)");
+    	if (!$query)
 		{
-			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;
-
+			die('Invalid query: ' . mysql_error());
 		}
-		else 
+		else
 		{
 			echo "Submission succeeded!!!";
 		}
-	}
-	mysql_close($connection);
+
 ?>

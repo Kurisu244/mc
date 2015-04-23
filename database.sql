@@ -4,7 +4,7 @@
  PASSWORD         CHAR(16) NOT NULL,
  FULLNAME         CHAR(60) NOT NULL,
  EMAIL            CHAR(40) NOT NULL,
- CONSTRAINT USERS_PRIMARY_KEY PRIMARY KEY (USERID));
+ CONSTRAINT USER_PRIMARY_KEY PRIMARY KEY (USERID));
  
 INSERT INTO USER VALUES (0001, 'vagelis.gougou', 'passwordge', 'Evangelos Gkougkoutoudis', 'vagelis.gougou@gmail.com');
 INSERT INTO USER VALUES (0002, 'chkounou', 'passwordxck', 'Xeni-Christina Kounoukla', 'chkounou@gmail.com');

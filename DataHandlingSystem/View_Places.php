@@ -16,16 +16,17 @@
       <?php
 		include('Connect_DB.php');
 
-		$query = "SELECT * FROM PLACE";
-		$result = mysql_query($query);
+		$query = $handler->query("SELECT * FROM PLACE");
+		$query->setFetchMode(PDO::FETCH_ASSOC);		
+		
 		echo "<tr> <th>Name</th> <th>Description</th> <th>Type</th></tr>";
-		while ($row = mysql_fetch_array($result))
+		while ($result = $query->fetch())
 		{
-			echo ("<tr><td>$row[NAME]</td>");
-			echo ("<td>$row[DESCRIPTION]</td>");
-			echo ("<td>$row[TYPE]</td>");
-			echo ('<td><a href="Edit_Form_Places.php?id=' . $row['PID'] . '">Edit</a></td>');
-			echo ('<td><a href="Delete_Data_Places.php?id=' .$row['PID'] . '">Delete</a></td>');
+			echo ("<tr><td>$result[NAME]</td>");
+			echo ("<td>$result[DESCRIPTION]</td>");
+			echo ("<td>$result[TYPE]</td>");
+			echo ('<td><a href="Edit_Form_Places.php?id=' . $result['PID'] . '">Edit</a></td>');
+			echo ('<td><a href="Delete_Data_Places.php?id=' .$result['PID'] . '">Delete</a></td>');
 		} 
       ?>
       </table>

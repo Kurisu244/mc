@@ -16,25 +16,34 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM RATING WHERE RID = '$id'";
-		$result = mysql_query($query);
-		$row = mysql_fetch_array($result);
+		
+		$query = $handler->query("SELECT * FROM RATING WHERE RID = '$id'");
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		
+		while($result = $query->fetch())
+		{
+			$rid = $result['RID'];
+			$pid = $result['PID'];
+			$stars = $result['STARS'];
+		}
+
+
       ?>
       <form method="post" action="Edit_Data_Ratings.php">
 		
-		<input type="hidden" name="rid" size="4" value="<?php echo "$row[RID]"?>">
+		<input type="hidden" name="rid" size="4" value="<?php echo $rid?>">
 		
         <tr>        
           <td>Place id:</td>
           <td>
-            <input type="text" name="pid" size="4" value="<?php echo "$row[PID]"?>">
+            <input type="text" name="pid" size="4" value="<?php echo $pid?>">
           </td>
         </tr>
 		
         <tr>
           <td>Stars:</td>
           <td>
-            <input type="text" name="stars" size="4" value="<?php echo "$row[STARS]"?>">
+            <input type="text" name="stars" size="4" value="<?php echo $stars?>">
           </td>
         </tr>
 		

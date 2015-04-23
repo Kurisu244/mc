@@ -15,17 +15,18 @@
       <table border="1">
       <?php
 		include('Connect_DB.php');
-
-		$query = "SELECT * FROM PICTURE";
-		$result = mysql_query($query);
+		
+		$query = $handler->query("SELECT * FROM PICTURE");
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		
 		echo "<tr> <th>Place ID</th> <th>URL</th></tr>";
-		while ($row = mysql_fetch_array($result))
+		while($result = $query->fetch())
 		{
-			echo ("<tr><td>$row[PLID]</td>");
-			echo ("<td>$row[LINK]</td>");
-			echo ('<td><a href="Edit_Form_Pictures.php?id=' . $row['PICID'] . '">Edit</a></td>');
-			echo ('<td><a href="Delete_Data_Pictures.php?id=' .$row['PICID'] . '">Delete</a></td>');
-		} 
+			echo ("<tr><td>$result[PLID]</td>");
+			echo ("<td>$result[LINK]</td>");
+			echo ('<td><a href="Edit_Form_Pictures.php?id=' . $result['PICID'] . '">Edit</a></td>');
+			echo ('<td><a href="Delete_Data_Pictures.php?id=' .$result['PICID'] . '">Delete</a></td>');
+		}
       ?>
       </table>
     </td>

@@ -6,33 +6,20 @@
 <body>
 
 <?php
-	$host = '127.0.0.1';
-	$username = 'user';
-	$password = '';
-	$database = 'team3';
-	
-	$connection = new mysqli($host, $username, $password, $database);
-	
-    if ($connection->connect_error)
-    {
-        echo "<p>Unable to establish a connection to the database:".$connection->connect_error."</p>";
-    }
-    else
-    {
+	include('Connect_DB.php');
+
     	$pid_l= $_POST["pid_l"];
-		//$lid = $_POST["lid"];
 		$latitude = $_POST["latitude"];
 		$longitude = $_POST["longitude"];
 		
-		$queryString = "INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES ($pid_l, $latitude, $longitude)";
-    	if (!$connection->query($queryString))
+		$query = $handler->query("INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES ($pid_l, $latitude, $longitude)");
+		
+    	if (!$query)
 		{
-			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;
+			die('Invalid query: ' . mysql_error());
 		}
-		else 
+		else
 		{
 			echo "Submission succeeded!!!";
 		}
-	}
-	mysql_close($connection);
 ?>

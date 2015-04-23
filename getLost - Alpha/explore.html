@@ -5,19 +5,45 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta charset="utf-8">
 		<style>
-		  html, body, #map 
-		  {
+		html, body, #map
+		{
 			height: 100%;
 			margin: 0px;
-			padding: 0px
-		  }
-		  img { width:100%; }
+			padding: 0px;
+			width: 100%;
+		}
+		
+		img 
+		{
+			width:100%;
+		}
+		
+		[name = "category"]
+		{
+		   width: auto;
+		   margin-left: 0em;
+		}
+		
+		a
+		{
+			text-decoration: none;
+			color: #000000;
+		}
+
 		</style>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 		<script>
 			function load()
 			{
+				var checked;
+
+				for (i=0;i<document.boxes.category.length;i++){
+					if (document.boxes.category[i].checked == true){
+						checked = document.boxes.category[i].id;
+						break;
+					}
+				}
 				var map = new google.maps.Map(document.getElementById("map"), 
 				{
 					center: new google.maps.LatLng(40.626369, 22.948428),
@@ -35,18 +61,26 @@
 						var description = markers[i].getAttribute("description");
 						var type = markers[i].getAttribute("type");
 						var link = markers[i].getAttribute("link");
+						var lat = parseFloat(markers[i].getAttribute("lat"));
+						var lng = parseFloat(markers[i].getAttribute("lng"));
 						var point = new google.maps.LatLng(
-							parseFloat(markers[i].getAttribute("lat")),
-							parseFloat(markers[i].getAttribute("lng")));
-						var content = "<b>" + name + "</b> <br/>" + "<i>" + type + "</i> <br/>" + description;
-						var marker = new google.maps.Marker(
+							lat,
+							lng);
+						var content = "<b>" + name + "</b> <br/>" + "<i>" + type + "</i> <br/>" + description +  "<img src=" + link + ">" + 
+						'<br><a href="generatepage.php?lat='+lat+'&lng='+lng+'">Get me to full page</a>';
+						if(checked == type || checked == "All")
 						{
-							map: map,
-							position: point,
-						});
-						bindInfoWindow(marker, map, infoWindow, content);
+							var marker = new google.maps.Marker(
+							{
+								map: map,
+								position: point,
+							});
+						
+							bindInfoWindow(marker, map, infoWindow, content);
+						}
 					}
 				});
+				myFunction()
 			}
 		
 			function bindInfoWindow(marker, map, infoWindow, content) 
@@ -83,7 +117,45 @@
 		</script>
 	</head>
 		<body onload="load()">
+		<header id="header">
+				<h1><a href="index.html">Get Lost...</a> by MicroLimn SoftWorks</h1>
+				<form name = "boxes">
+				<label>
+				<input type="radio" id="Hotel" name = "category" onclick = load()> Hotels
+				</label>
+				<label>
+				<input type="radio" id="Hospital" name = "category" onclick = load()> Hospitals
+				</label>
+				<label>
+				<input type="radio" id="Sight" name = "category" onclick = load()> Sights
+				</label>
+				<label>
+				<input type="radio" id="Museum" name = "category" onclick = load()> Museums
+				</label>
+				<label>
+				<input type="radio" id="Pharmacy" name = "category" onclick = load()> Pharmacies
+				</label>
+				<label>
+				<input type="radio" id="Money-Exchange" name = "category" onclick = load()> Money-Exchange
+				</label>
+				<label>
+				<input type="radio" id="Cafe-Bar" name = "category" onclick = load()> Cafe-Bars
+				</label>
+				<label>
+				<input type="radio" id="Bank-ATM" name = "category" onclick = load()> Banks-ATMs
+				</label>
+				<label>
+				<input type="radio" id="Restaurant" name = "category" onclick = load()> Restaurants
+				</label>
+				<label>
+				<input type="radio" id="All" name = "category" onclick = load() checked> All Places
+				</label>
+				</form>
+				<br>
+			</header>
 			<div id="map"></div>
 		</body>
 </html>
+
+
 

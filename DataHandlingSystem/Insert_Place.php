@@ -6,34 +6,22 @@
 <body>
 
 <?php
-	$host = '127.0.0.1';
-	$username = 'user';
-	$password = '';
-	$database = 'team3';
-	
-	$connection = new mysqli($host, $username, $password, $database);
-	
-    if ($connection->connect_error)
-    {
-        echo "<p>Unable to establish a connection to the database:".$connection->connect_error."</p>";
-    }
-    else
-    {
-    	//$pid = $_POST["pid"];
+		include('Connect_DB.php');
+    	
+		
 		$pname = $_POST["pname"];
 		$pdescription = $_POST["pdescription"];
 		$ptype = $_POST["ptype"];
+		
+		$query = $handler->query("INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('$pname', '$pdescription', '$ptype')");
 
-        $queryString = "INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('$pname', '$pdescription', '$ptype')";
-    	if (!$connection->query($queryString))
+		if (!$query)
 		{
-			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;
-
+			die('Invalid query: ' . mysql_error());
 		}
-		else 
+		else
 		{
 			echo "Submission succeeded!!!";
 		}
-	}
 
 ?>

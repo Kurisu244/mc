@@ -10,33 +10,37 @@ function parseToXML($htmlStr)
 	return $xmlStr;
 }
 
-include "connect2.php";
+include "connect.php";
 
-$query = "SELECT LATITUDE,LONGITUDE,NAME,DESCRIPTION,TYPE,STARS,LINK FROM LOCATION,PLACE,RATING,PICTURE
- WHERE LOCATION.PID = PLACE.PID AND RATING.PID = PLACE.PID AND PICTURE.PLID = PLACE.PID";
-$result = mysql_query($query);
-if (!$result)
+$query = $handler->query("SELECT LATITUDE,LONGITUDE,NAME,DESCRIPTION,TYPE,STARS,LINK FROM LOCATION,PLACE,RATING,PICTURE
+ WHERE LOCATION.PID = PLACE.PID AND RATING.PID = PLACE.PID AND PICTURE.PLID = PLACE.PID");
+$query->setFetchMode(PDO::FETCH_ASSOC);
+ 
+if(!$query)
 {
   die('Invalid query: ' . mysql_error());
 }
 
-header("Content-type: text/xml");
-
-echo '<markers>';
-
-while ($row = @mysql_fetch_assoc($result))
+else
 {
-  echo '<marker ';
-  echo 'name="' . parseToXML($row['NAME']) . '" ';
-  echo 'description="' . parseToXML($row['DESCRIPTION']) . '" ';
-  echo 'type="' . parseToXML($row['TYPE']) . '" ';
-  echo 'link="' . parseToXML($row['LINK']) . '" ';
-  echo 'lat="' . $row['LATITUDE'] . '" ';
-  echo 'lng="' . $row['LONGITUDE'] . '" ';
-  echo 'stars="' . $row['STARS'] . '" ';
-  echo '/>';
+	header("Content-type: text/xml");
+	
+	echo '<markers>';
+	
+	while ($result = $query->fetch())
+	{
+		echo '<marker ';
+		echo 'name="' . parseToXML($result['NAME']) . '" ';
+		echo 'description="' . parseToXML($result['DESCRIPTION']) . '" ';
+		echo 'type="' . parseToXML($result['TYPE']) . '" ';
+		echo 'link="' . parseToXML($result['LINK']) . '" ';
+		echo 'lat="' . $result['LATITUDE'] . '" ';
+		echo 'lng="' . $result['LONGITUDE'] . '" ';
+		echo 'stars="' . $result['STARS'] . '" ';
+		echo '/>';
+	}
+	
+	echo '</markers>';
 }
-
-echo '</markers>';
 
 ?>

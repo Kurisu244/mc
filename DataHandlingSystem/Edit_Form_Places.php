@@ -16,32 +16,40 @@
 		include('Connect_DB.php');
 		
 		$id = $_GET['id'];
-		$query = "SELECT * FROM PLACE WHERE PID = '$id'";
-		$result = mysql_query($query);
-		$row = mysql_fetch_array($result);
+	
+		$query = $handler->query("SELECT * FROM PLACE WHERE PID = '$id'");
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		
+		while($result = $query->fetch())
+		{
+			$pid = $result['PID'];
+			$name = $result['NAME'];
+			$desc = $result['DESCRIPTION'];
+			$type = $result['TYPE'];
+		}
       ?>
       <form method="post" action="Edit_Data_Places.php">
 	  
-		<input type="hidden" name="pid" size="4" value="<?php echo "$row[PID]"?>">
+		<input type="hidden" name="pid" size="4" value="<?php echo $pid?>">
 	  
         <tr>        
           <td>Name:</td>
           <td>
-            <input type="text" name="pname" size="40" value="<?php echo "$row[NAME]"?>">
+            <input type="text" name="pname" size="60" value="<?php echo $name?>">
           </td>
         </tr>
 		
         <tr>
           <td>Description:</td>
           <td>
-			<textarea rows="10" cols="100" name="pdescription"><?php echo "$row[DESCRIPTION]"?></textarea>
+			<textarea rows="10" cols="100" name="pdescription"><?php echo $desc?></textarea>
           </td>
         </tr>
 		
 		<tr>
           <td>Type:</td>
           <td>
-            <input type="text" name="ptype" size="20" value="<?php echo "$row[TYPE]"?>">
+            <input type="text" name="ptype" size="20" value="<?php echo $type?>">
           </td>
         </tr>
 		

@@ -9,10 +9,10 @@ include "connect.php";
 	$star = 0;
 	$rat = "NULL";
 
-if (isset($_POST['lat']) && isset($_POST['lng'])) {
+if (isset($_GET['lat']) && isset($_GET['lng'])) {
 	
-	$lat = strip_tags($_POST['lat']);
-	$lng = strip_tags($_POST['lng']);
+	$lat = $_GET['lat'];
+	$lng = $_GET['lng'];
 	
 	$query = $handler->query("SELECT PID FROM location
 								WHERE LATITUDE LIKE '$lat' && LONGITUDE LIKE '$lng'");

@@ -6,33 +6,18 @@
 <body>
 
 <?php
-	$host = '127.0.0.1';
-	$username = 'user';
-	$password = '';
-	$database = 'team3';
-	
-	$connection = new mysqli($host, $username, $password, $database);
-	
-    if ($connection->connect_error)
-    {
-        echo "<p>Unable to establish a connection to the database:".$connection->connect_error."</p>";
-    }
-    else
-    {
+	include('Connect_DB.php');
+
 		$pid_p = $_POST["pid_p"];
-		//$picid = $_POST["picid"];
 		$url = $_POST["url"];
 		
-		$queryString = "INSERT INTO PICTURE (PLID, LINK) VALUES ($pid_p, '$url')";
-    	if (!$connection->query($queryString))
+		$query = $handler->query("INSERT INTO PICTURE (PLID, LINK) VALUES ($pid_p, '$url')");
+    	if (!$query)
 		{
-			echo "Submission failed: (" . $connection->errno . ") " . $connection->error;
-
+			die('Invalid query: ' . mysql_error());
 		}
-		else 
+		else
 		{
 			echo "Submission succeeded!!!";
 		}
-	}
-	mysql_close($connection);
 ?>

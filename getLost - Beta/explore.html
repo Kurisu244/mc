@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Get Lost...</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<style>
+		html, body, #map
+		{
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+		}
+		
+		img 
+		{
+			width:100%;
+		}
+		
+		[name = "category"]
+		{
+		   width: auto;
+		   margin-left: 0em;
+		}
+		
+		a
+		{
+			text-decoration: none;
+			color: #000000;
+		}
+
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+		<script>
+			function load()
+			{
+				var checked;
+
+				for (i=0;i<document.boxes.category.length;i++){
+					if (document.boxes.category[i].checked == true){
+						checked = document.boxes.category[i].id;
+						break;
+					}
+				}
+				var map = new google.maps.Map(document.getElementById("map"), 
+				{
+					center: new google.maps.LatLng(40.626369, 22.948428),
+					zoom: 12
+				});
+				var infoWindow = new google.maps.InfoWindow;
+
+				downloadUrl("genxml.php", function(data)
+				{
+					var xml = data.responseXML;
+					var markers = xml.documentElement.getElementsByTagName("marker");
+					for (var i = 0; i < markers.length; i++)
+					{
+						var name = markers[i].getAttribute("name");
+						var description = markers[i].getAttribute("description");
+						var type = markers[i].getAttribute("type");
+						var link = markers[i].getAttribute("link");
+						var lat = parseFloat(markers[i].getAttribute("lat"));
+						var lng = parseFloat(markers[i].getAttribute("lng"));
+						var point = new google.maps.LatLng(
+							lat,
+							lng);
+						var content = "<b>" + name + "</b> <br/>" + "<i>" + type + "</i> <br/>" + description +  "<img src=" + link + ">" + 
+						'<br><a href="generatepage.php?lat='+lat+'&lng='+lng+'">Get me to full page</a>';
+						if(checked == type || checked == "All")
+						{
+							var marker = new google.maps.Marker(
+							{
+								map: map,
+								position: point,
+							});
+						
+							bindInfoWindow(marker, map, infoWindow, content);
+						}
+					}
+				});
+				myFunction()
+			}
+		
+			function bindInfoWindow(marker, map, infoWindow, content) 
+			{
+				google.maps.event.addListener(marker, 'click', function() 
+				{
+					infoWindow.setOptions({maxWidth:250}); 
+					infoWindow.setContent(content);
+					infoWindow.open(map, marker);
+				});
+			}
+
+			function downloadUrl(url, callback) 
+			{
+				var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') :
+				new XMLHttpRequest;
+
+				request.onreadystatechange = function()
+				{
+					if (request.readyState == 4) 
+					{
+						request.onreadystatechange = doNothing;
+						callback(request, request.status);
+					}
+				};
+
+				request.open('GET', url, true);
+				request.send(null);
+			}
+
+			function doNothing() {}
+			
+		</script>
+	</head>
+		<body onload="load()">
+		<header id="header">
+				<h1><a href="index.html">Get Lost...</a> by MicroLimn SoftWorks</h1>
+				<form name = "boxes">
+				<label>
+				<input type="radio" id="Hotel" name = "category" onclick = load()> Hotels
+				</label>
+				<label>
+				<input type="radio" id="Hospital" name = "category" onclick = load()> Hospitals
+				</label>
+				<label>
+				<input type="radio" id="Sight" name = "category" onclick = load()> Sights
+				</label>
+				<label>
+				<input type="radio" id="Museum" name = "category" onclick = load()> Museums
+				</label>
+				<label>
+				<input type="radio" id="Pharmacy" name = "category" onclick = load()> Pharmacies
+				</label>
+				<label>
+				<input type="radio" id="Money-Exchange" name = "category" onclick = load()> Money-Exchange
+				</label>
+				<label>
+				<input type="radio" id="Cafe-Bar" name = "category" onclick = load()> Cafe-Bars
+				</label>
+				<label>
+				<input type="radio" id="Bank-ATM" name = "category" onclick = load()> Banks-ATMs
+				</label>
+				<label>
+				<input type="radio" id="Restaurant" name = "category" onclick = load()> Restaurants
+				</label>
+				<label>
+				<input type="radio" id="All" name = "category" onclick = load() checked> All Places
+				</label>
+				</form>
+				<br>
+			</header>
+			<div id="map"></div>
+		</body>
+</html>
+
+
+

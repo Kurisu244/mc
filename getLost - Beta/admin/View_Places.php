@@ -8,31 +8,35 @@
 <body background="pic01.jpg">
 <table>
   <tr>
-    <td align="center">EDIT OR DELETE PLACES</td>
+    <td align="center"><strong>EDIT OR DELETE PLACES</td>
   </tr>
   <tr>
     <td>
       <table border="1">
       <?php
-		include('Connect_DB.php');
-
-		$query = $handler->query("SELECT * FROM PLACE");
-		$query->setFetchMode(PDO::FETCH_ASSOC);		
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
+		
+		$result = $db -> select("PLACE", array());
 		
 		echo "<tr> <th>Name</th> <th>Description</th> <th>Type</th></tr>";
-		while ($result = $query->fetch())
+		while($rows = $result->fetch())
 		{
-			echo ("<tr><td>$result[NAME]</td>");
-			echo ("<td>$result[DESCRIPTION]</td>");
-			echo ("<td>$result[TYPE]</td>");
-			echo ('<td><a href="Edit_Form_Places.php?id=' . $result['PID'] . '">Edit</a></td>');
-			echo ('<td><a href="Delete_Data_Places.php?id=' .$result['PID'] . '">Delete</a></td>');
+			echo ("<tr><td>$rows[NAME]</td>");
+			echo ("<td>$rows[DESCRIPTION]</td>");
+			echo ("<td>$rows[TYPE]</td>");
+			echo ('<td><a href="Edit_Form_Places.php?id=' . $rows['PID'] . '">Edit</a></td>');
+			echo ('<td><a href="Delete_Data_Places.php?id=' .$rows['PID'] . '">Delete</a></td>');
 		} 
       ?>
       </table>
     </td>
    </tr>
 </table>
+<br>
+<center>
+<h1><a href=<?php echo "mainDataHandling.html"; ?>>Main Page</a></h1>;
+</center>
 </body>
-
 </html>

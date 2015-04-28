@@ -1,12 +1,12 @@
 <?php
 	if (isset($_POST['submit']))
 	{
-		include '../connect.php';
+		include 'connect.php';
 		$user = $_POST['Username'];
 		$pass = $_POST['Password'];
 		$email = $_POST['Email'];
 		$name = $_POST['FullName'];
-		$q = "INSERT INTO users (Username,Password,Fullname,Email) 
+		$q = "INSERT INTO USER (USERNAME,PASSWORD,FULLNAME,EMAIL) 
 									VALUES (:user, :pass, :name, :email);";
 		$query = $handler->prepare($q);	
 		$results = $query->execute(array(

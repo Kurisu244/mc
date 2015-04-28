@@ -20,7 +20,7 @@ INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis',
  
  CREATE TABLE LOCATION (
  LID             INT(4) NOT NULL AUTO_INCREMENT,
- PID             INT(4) NOT NULL,
+ PID             INT(4) NOT NULL UNIQUE,
  LATITUDE        FLOAT(10,6) NOT NULL,
  LONGITUDE       FLOAT(10,6) NOT NULL,
  CONSTRAINT LOCATION_PRIMARY_KEY PRIMARY KEY (LID),
@@ -30,7 +30,7 @@ INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis',
  
  CREATE TABLE RATING (
  RID             INT(4) NOT NULL AUTO_INCREMENT,
- PID             INT(4) NOT NULL,
+ PID             INT(4) NOT NULL UNIQUE,
  STARS           INT(1) NOT NULL,
  CONSTRAINT RATING_PRIMARY_KEY PRIMARY KEY (RID),
  CONSTRAINT RATING_FOREIGN_KEY FOREIGN KEY (PID) REFERENCES PLACE (PID)
@@ -39,7 +39,7 @@ INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis',
  
  CREATE TABLE PICTURE (
  PICID            INT(4) NOT NULL AUTO_INCREMENT,
- PLID             INT(4) NOT NULL,
+ PLID             INT(4) NOT NULL UNIQUE,
  LINK             CHAR(200) NOT NULL,
  CONSTRAINT PICTURE_PRIMARY_KEY PRIMARY KEY (PICID),
  CONSTRAINT PICTURE_FOREIGN_KEY FOREIGN KEY (PLID) REFERENCES PLACE (PID)
@@ -66,7 +66,7 @@ INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis',
  INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Ippokrateio General Hospital of Thessaloniki', '', 'Hospital');
  INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0004, 40.611484,22.961733);
  INSERT INTO RATING (PID, STARS) VALUES (0004, 4);
- INSERT INTO PICTURE (PLID, LINK) VALUES (0004, 'http://www.makthes.gr/filestore/modules/news/5/5/55912/1h.jpg');
+ INSERT INTO PICTURE (PLID, LINK) VALUES (0004, 'http://www.alpha965.gr/wp-content/uploads/2014/02/ippokrateio.jpg');
  
  INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ("White Tower of Thessaloniki", "It has been adopted as the symbol of the city.", 'Sight');
  INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0005, 40.626369, 22.948428);
@@ -82,14 +82,14 @@ INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis',
  INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Archaeological Museum of Thessaloniki', 'The Archaeological Museum of Thessaloniki is a museum in Thessaloniki, Central Macedonia, Greece.
  It holds and interprets artifacts from the Archaic, Classical, Hellenistic and Roman periods,
  mostly from the city of Thessaloniki but also from the region of Macedonia in general.', 'Museum');
- INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0007, 40.6251, 22.9538);
+ INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0007, 40.625101, 22.953802);
  INSERT INTO RATING (PID, STARS) VALUES (0007, 3);
  INSERT INTO PICTURE (PLID, LINK) VALUES (0007, 'http://philon.cheng.auth.gr/files/thessaloniki/yenicami.jpg');
  
  INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('War Museum of Thessaloniki', 'The War Museum of Thessaloniki is a military museum in Thessaloniki, Central Macedonia, Greece.
  Thessaloniki War Museum opened its doors to the public in October 2000.
  It is housed in the building designed by architect Vitaliano Posseli and erected between 1900 and 1902.', 'Museum');
- INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0008, 40.6243, 22.9596);
+ INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0008, 40.624302, 22.959602);
  INSERT INTO RATING (PID, STARS) VALUES (0008, 5);
  INSERT INTO PICTURE (PLID, LINK) VALUES (0008, 'http://media-cdn.tripadvisor.com/media/photo-s/05/54/df/c6/caption.jpg');
  
@@ -122,7 +122,7 @@ Tel.: +302310265969', 'Money-Exchange');
  INSERT INTO PICTURE (PLID, LINK) VALUES (0013, 'http://www.travelstyle.gr/portal/photos/restaurants/2454__DSC1802.jpg');
  
  INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Ouzou Melathron', 'Karipi 21 Thessaloniki 546 24', 'Restaurant');
- INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0014, 40.636621, 22.940647);
+ INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0014, 40.636623, 22.940647);
  INSERT INTO RATING (PID, STARS) VALUES (0014, 4);
  INSERT INTO PICTURE (PLID, LINK) VALUES (0014, 'http://static.panoramio.com/photos/large/43486794.jpg');
 

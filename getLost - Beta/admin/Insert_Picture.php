@@ -6,13 +6,16 @@
 <body>
 
 <?php
-	include('Connect_DB.php');
-
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
+		
 		$pid_p = $_POST["pid_p"];
 		$url = $_POST["url"];
+	
+		$query = $db->insert("PICTURE",array('PLID' => $pid_p, 'LINK' => $url));
 		
-		$query = $handler->query("INSERT INTO PICTURE (PLID, LINK) VALUES ($pid_p, '$url')");
-    	if (!$query)
+		if (!$query)
 		{
 			die('Invalid query: ' . mysql_error());
 		}
@@ -20,4 +23,8 @@
 		{
 			echo "Submission succeeded!!!";
 		}
+
 ?>
+<h1><a href=<?php echo "insertAll.html"; ?>>Insert Data</a></h1>;
+</body>
+</html>

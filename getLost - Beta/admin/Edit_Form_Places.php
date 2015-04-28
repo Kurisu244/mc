@@ -13,20 +13,22 @@
     <td>
       <table>
       <?php
-		include('Connect_DB.php');
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
 		
 		$id = $_GET['id'];
 	
-		$query = $handler->query("SELECT * FROM PLACE WHERE PID = '$id'");
-		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$result = $db -> select("PLACE", array('PID'=>$id));
 		
-		while($result = $query->fetch())
+		while($rows = $result->fetch())
 		{
-			$pid = $result['PID'];
-			$name = $result['NAME'];
-			$desc = $result['DESCRIPTION'];
-			$type = $result['TYPE'];
+			$pid = $rows['PID'];
+			$name = $rows['NAME'];
+			$desc = $rows['DESCRIPTION'];
+			$type = $rows['TYPE'];
 		}
+		
       ?>
       <form method="post" action="Edit_Data_Places.php">
 	  

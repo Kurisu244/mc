@@ -13,19 +13,20 @@
     <td>
       <table>
       <?php
-		include('Connect_DB.php');
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
 		
 		$id = $_GET['id'];
-
-		$query = $handler->query("SELECT * FROM LOCATION WHERE LID = '$id'");
-		$query->setFetchMode(PDO::FETCH_ASSOC);
+	
+		$result = $db -> select("LOCATION", array('LID'=>$id));
 		
-		while($result = $query->fetch())
+		while($rows = $result->fetch())
 		{
-			$lid = $result['LID'];
-			$pid = $result['PID'];
-			$latitude = $result['LATITUDE'];
-			$longitude = $result['LONGITUDE'];
+			$lid = $rows['LID'];
+			$pid = $rows['PID'];
+			$latitude = $rows['LATITUDE'];
+			$longitude = $rows['LONGITUDE'];
 		}
       ?>
       <form method="post" action="Edit_Data_Locations.php">

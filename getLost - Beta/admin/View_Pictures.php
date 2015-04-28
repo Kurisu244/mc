@@ -8,30 +8,35 @@
 <body background="pic01.jpg">
 <table>
   <tr>
-    <td align="center">EDIT OR DELETE PICTURES</td>
+    <td align="center"><strong>EDIT OR DELETE PICTURES</td>
   </tr>
   <tr>
     <td>
       <table border="1">
       <?php
-		include('Connect_DB.php');
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
 		
-		$query = $handler->query("SELECT * FROM PICTURE");
-		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$result = $db -> select("PICTURE", array());
 		
 		echo "<tr> <th>Place ID</th> <th>URL</th></tr>";
-		while($result = $query->fetch())
+		while($rows = $result->fetch())
 		{
-			echo ("<tr><td>$result[PLID]</td>");
-			echo ("<td>$result[LINK]</td>");
-			echo ('<td><a href="Edit_Form_Pictures.php?id=' . $result['PICID'] . '">Edit</a></td>');
-			echo ('<td><a href="Delete_Data_Pictures.php?id=' .$result['PICID'] . '">Delete</a></td>');
+			echo ("<tr><td>$rows[PLID]</td>");
+			echo ("<td>$rows[LINK]</td>");
+			echo ('<td><a href="Edit_Form_Pictures.php?id=' . $rows['PICID'] . '">Edit</a></td>');
+			echo ('<td><a href="Delete_Data_Pictures.php?id=' .$rows['PICID'] . '">Delete</a></td>');
 		}
       ?>
       </table>
     </td>
    </tr>
 </table>
+<br>
+<center>
+<h1><a href=<?php echo "mainDataHandling.html"; ?>>Main Page</a></h1>;
+</center>
 </body>
 
 </html>

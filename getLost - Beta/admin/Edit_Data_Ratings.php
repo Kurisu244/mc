@@ -1,6 +1,7 @@
 <?php
-	include('Connect_DB.php');
-
-	$query = $handler->query("UPDATE RATING SET PID = '$_POST[pid]', STARS = '$_POST[stars]' WHERE RID = '$_POST[rid]'");
+	require_once 'Connect_DB.php';
+    require_once 'dbHandler.php';
+	$db = new dbHandler();
+	$db->update("RATING", array("PID" => $_POST[pid], "STARS" => $_POST[stars]), array("RID" => $_POST[rid]));
 	header("location: View_Ratings.php");
 ?>

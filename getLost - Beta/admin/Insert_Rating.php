@@ -6,13 +6,16 @@
 <body>
 
 <?php
-	include('Connect_DB.php');
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
+		
 		$pid_r = $_POST["pid_r"];
-		//$rid = $_POST["rid"];
 		$stars = $_POST["stars"];
-
-		$query = $handler->query("INSERT INTO RATING (PID, STARS) VALUES ($pid_r, $stars)");
-    	if (!$query)
+	
+		$query = $db->insert("RATING", array('PID' => $pid_r, 'STARS' => $stars));
+		
+		if (!$query)
 		{
 			die('Invalid query: ' . mysql_error());
 		}
@@ -22,3 +25,6 @@
 		}
 
 ?>
+<h1><a href=<?php echo "insertAll.html"; ?>>Insert Data</a></h1>;
+</body>
+</html>

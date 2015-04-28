@@ -13,18 +13,18 @@
     <td>
       <table>
       <?php
-		include('Connect_DB.php');
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
 		
 		$id = $_GET['id'];
-		
-		$query = $handler->query("SELECT * FROM PICTURE WHERE PLID = '$id'");
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		
-		while($result = $query->fetch())
+	
+		$result = $db -> select("PICTURE", array('PLID'=>$id));
+		while($rows = $result->fetch())
 		{
-			$picid = $result['PICID'];
-			$plid = $result['PLID'];
-			$link = $result['LINK'];
+			$picid = $rows['PICID'];
+			$plid = $rows['PLID'];
+			$link = $rows['LINK'];
 		}
 
       ?>

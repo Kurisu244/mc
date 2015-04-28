@@ -8,31 +8,36 @@
 <body background="pic01.jpg">
 <table>
   <tr>
-    <td align="center">EDIT OR DELETE LOCATIONS</td>
+    <td align="center"><strong>EDIT OR DELETE LOCATIONS</td>
   </tr>
   <tr>
     <td>
       <table border="1">
       <?php
-		include('Connect_DB.php');
-
-		$query = $handler->query("SELECT * FROM LOCATION");
-		$query->setFetchMode(PDO::FETCH_ASSOC);	
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
+		
+		$result = $db -> select("LOCATION", array());
 		
 		echo "<tr> <th>Place ID</th> <th>Latitude</th> <th>Longitude</th></tr>";
-		while ($result = $query->fetch())
+		while ($rows = $result->fetch())
 		{
-			echo ("<tr><td>$result[PID]</td>");
-			echo ("<td>$result[LATITUDE]</td>");
-			echo ("<td>$result[LONGITUDE]</td>");
-			echo ('<td><a href="Edit_Form_Locations.php?id=' . $result['LID'] . '">Edit</a></td>');
-			echo ('<td><a href="Delete_Data_Locations.php?id=' .$result['LID'] . '">Delete</a></td>');
+			echo ("<tr><td>$rows[PID]</td>");
+			echo ("<td>$rows[LATITUDE]</td>");
+			echo ("<td>$rows[LONGITUDE]</td>");
+			echo ('<td><a href="Edit_Form_Locations.php?id=' . $rows['LID'] . '">Edit</a></td>');
+			echo ('<td><a href="Delete_Data_Locations.php?id=' .$rows['LID'] . '">Delete</a></td>');
 		} 
       ?>
       </table>
     </td>
    </tr>
 </table>
+<br>
+<center>
+<h1><a href=<?php echo "mainDataHandling.html"; ?>>Main Page</a></h1>
+</center>
 </body>
 
 </html>

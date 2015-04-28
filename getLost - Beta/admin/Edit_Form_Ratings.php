@@ -13,20 +13,20 @@
     <td>
       <table>
       <?php
-		include('Connect_DB.php');
+		require_once 'Connect_DB.php';
+    	require_once 'dbHandler.php';
+		$db = new dbHandler();
 		
 		$id = $_GET['id'];
+	
+		$result = $db -> select("RATING", array('RID'=>$id));
 		
-		$query = $handler->query("SELECT * FROM RATING WHERE RID = '$id'");
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		
-		while($result = $query->fetch())
+		while($rows = $result->fetch())
 		{
-			$rid = $result['RID'];
-			$pid = $result['PID'];
-			$stars = $result['STARS'];
+			$rid = $rows['RID'];
+			$pid = $rows['PID'];
+			$stars = $rows['STARS'];
 		}
-
 
       ?>
       <form method="post" action="Edit_Data_Ratings.php">

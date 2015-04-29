@@ -228,5 +228,58 @@ INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0032, 40.634385, 22.9409
 INSERT INTO RATING (PID, STARS) VALUES (0032, 4);
 INSERT INTO PICTURE (PLID, LINK) VALUES (0032, 'http://www.fruttidimare.gr/wp-content/uploads/2014/11/istoriko-kentro.jpg');
 
+-- Official data gathered by Vaggelis Gkougkoutoudis 
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Electra Palace ', '5-star hotel 9 Pl. Aristotelous Phone number:231 029 4000
+ELECTRA PALACE HOTEL in Thessaloniki, having undergone a complete renovation recently, is now fully equipped according to the latest trends, needs and international specifications. It lives up to the philosophy of modern living and offers the visitor an ideal and unforgettable experience. The hotel was awarded the Silver Morpheus as a best city hotel (Philoxenia 2008)., Thessaloniki', 'Hotel');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0033, 40.633067, 22.941136);
+INSERT INTO RATING (PID, STARS) VALUES (0033, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0033, 'http://hotels.cdn-venere.com/hotels/1000000/20000/20000/19966/19966_60_b.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('The Met Hotel ', '5-star hotel 48, 26th Oktovriou Str Conveniently situated on the harbour of Thessaloniki, within easy reach of the city centre, THE MET HOTEL provides outstanding comfort and sophisticated amenities for business and leisure travellers., Thessaloniki', 'Hotel');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0034, 37.977636, 23.733536);
+INSERT INTO RATING (PID, STARS) VALUES (0034, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0034, 'http://www.symvoli.gr/conference/wmemc2012/uploads/images/met6.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('G. Papanikolaou General Hospital ', '  Eksoxi 57010 Tel: +302310/357602 Thessaloniki', 'Hospital');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0035, 40.631054, 23.045135);
+INSERT INTO RATING (PID, STARS) VALUES (0035, 3);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0035, 'http://www.snf.org/media/3711334/01_Responsive.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Agios Dimitrios General Hospital ', ' Address: 2 Elenis Zografou Street  54634  Thessaloniki', 'Hospital');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0036, 37.934075, 23.729335);
+INSERT INTO RATING (PID, STARS) VALUES (0036, 3);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0036, ' http://mw2.google.com/mw-panoramio/photos/medium/4117811.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Palace, Arch & Rotunda of Galerius ', ' The Arch of Galerius, known to the people of Thessaloniki as the Kamara (meaning arch). It was erected at the intersection of the Via Regia, the main road artery crossing the city from east to west, and the processional route which linked the palace to the Rotunda.', 'Sight');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0037, 40.632245, 22.951743);
+INSERT INTO RATING (PID, STARS) VALUES (0037, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0037, ' http://www.enjoythessaloniki.com/wp-content/uploads/2012/08/Arch%20of%20Galerius/Arch%20of%20Galerius1.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Jewish Mansions ', ' Every step you take in the Jewish Quarter brings you closer to discovering tangible remains of a dramatic chapter in Jewish history, especially of the period of its greatest grandeur: the time of the Second Temple. 
+This period is richly commemorated at the Burnt House and the Herodian Mansions. ', 'Sight');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0038, 31.775315, 35.232265);
+INSERT INTO RATING (PID, STARS) VALUES (0038, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0038, 'http://www.thecityreview.com/ues/fifave/jewish.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Tiho Tiho ', ' It is a very cozy place where you can either go for a coffee or a drink, or you can go there to have lunch or even a late dinner. The food is delicious and the crowd is diverse. From teenage people to cool elders and from romantic couples to loud companies of students, everyone appreciates the huge diversity and the great quality the place offers.', 'Cafe-Bar');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0039, 40.642765, 22.955284);
+INSERT INTO RATING (PID, STARS) VALUES (0039, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0039, ' https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpf1/t31.0-8/c0.157.851.315/p851x315/458976_10151076912869623_1173436071_o.jpg ');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Kitchen Bar ', ' This place used to be a warehouse, which makes its appearance unique. The kitchen is located at the center of the resaturant, so you can see all the cooking going on! Its view of the city is really worth it, since you can see the sea front of the city as well as the White Tower! The food -although a bit pricey- is delicious and of big portions. ', 'Cafe-Bar');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0040, 37.955275, 23.760826);
+INSERT INTO RATING (PID, STARS) VALUES (0040, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0040, 'http://www.protothema.gr/files/1/2011/12/22/Kitchenbar.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Pulp ', ' One is for sure, you wont find so easily an other bar in town with such range of beers! Black, red or blonde? From what country? It is not so easy to choose? Just say what you would like to try and they will recommend you some of their beers! ', 'Cafe-Bar');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0041, 40.632094, 22.947976);
+INSERT INTO RATING (PID, STARS) VALUES (0041, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0041, 'https://www.likealocalguide.com/media/cache/87/70/87704768a1604c266938b0692ff4f5e0.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Mon Fere ', ' Almost everything in there is white: the chairs, the tables, the walls. The floor is like a chess board, with black and white tiles. The place has the style of a french bistro and it seems to have been missing from our town. The locals seem to love it, both for coffee during the day and drinks at night. Delicious pastry is also served! ', 'Cafe-Bar');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0042, 40.627946, 22.948777);
+INSERT INTO RATING (PID, STARS) VALUES (0042, 3);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0042, 'http://4.bp.blogspot.com/-2GhtXky34FQ/TxIjgNduRmI/AAAAAAAAANg/vxEjvUuMG6w/s1600/Mon_Frere_001.jpg');
+
  
  

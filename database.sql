@@ -6,11 +6,6 @@
  EMAIL            CHAR(40) NOT NULL,
  CONSTRAINT USER_PRIMARY_KEY PRIMARY KEY (USERID));
  
-INSERT INTO USER VALUES (0001, 'vagelis.gougou', 'passwordge', 'Evangelos Gkougkoutoudis', 'vagelis.gougou@gmail.com');
-INSERT INTO USER VALUES (0002, 'chkounou', 'passwordxck', 'Xeni-Christina Kounoukla', 'chkounou@gmail.com');
-INSERT INTO USER VALUES (0003, 'andreasrigos', 'passwordra', 'Andreas Rigopoulos', 'andreasrigos@yahoo.gr');
-INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis', 'ch.theod@hotmail.com');
-
  CREATE TABLE PLACE (
  PID            INT(4) NOT NULL AUTO_INCREMENT,
  NAME           CHAR(200) NOT NULL,
@@ -46,6 +41,14 @@ INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis',
  ON DELETE CASCADE
  ON UPDATE CASCADE);
  
+ -- Admins:
+INSERT INTO USER VALUES (0001, 'vagelis.gougou', 'passwordge', 'Evangelos Gkougkoutoudis', 'vagelis.gougou@gmail.com');
+INSERT INTO USER VALUES (0002, 'chkounou', 'passwordxck', 'Xeni-Christina Kounoukla', 'chkounou@gmail.com');
+INSERT INTO USER VALUES (0003, 'andreasrigos', 'passwordra', 'Andreas Rigopoulos', 'andreasrigos@yahoo.gr');
+INSERT INTO USER VALUES (0004, 'ch.theod', 'passwordtc', 'Christos Theodoridis', 'ch.theod@hotmail.com');
+
+ -- Unofficial data for testing purposes only
+
  INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Capsis Hotel Thessaloniki', '4-star hotel with 2 restaurants, near Church of Panagia Chalkeon', 'Hotel');
  INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0001, 40.642187, 22.932285);
  INSERT INTO RATING (PID, STARS) VALUES (0001, 4);
@@ -125,6 +128,105 @@ Tel.: +302310265969', 'Money-Exchange');
  INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0014, 40.636623, 22.940647);
  INSERT INTO RATING (PID, STARS) VALUES (0014, 4);
  INSERT INTO PICTURE (PLID, LINK) VALUES (0014, 'http://static.panoramio.com/photos/large/43486794.jpg');
+
+ 
+ -- Official data gathered by Andreas Rigopoulos 
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Holiday Inn ', '3-star hotel 8 Monastiriou Street, Thessaloniki', 'Hotel');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0015, 40.64145, 22.933556);
+INSERT INTO RATING (PID, STARS) VALUES (0015, 3);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0015, 'http://www.destination360.com/europe/greece/thessaloniki/holiday-inn-thessaloniki.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('City Hotel', '4-star hotel 11 Komninon Street, Thessaloniki', 'Hotel');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0016, 40.633875, 22.940065);
+INSERT INTO RATING (PID, STARS) VALUES (0016, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0016, 'https://d1p98clqffzjxh.cloudfront.net/city-jsui/L51581.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Anticancer Hospital of Thessaloniki, Theagenio', 'Simionidi 2 Thessaloniki', 'Hospital');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0017, 40.617675, 22.960005);
+INSERT INTO RATING (PID, STARS) VALUES (0017, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0017, 'http://www.alpha965.gr/wp-content/uploads/2014/06/%CE%B8%CE%B5%CE%B1%CE%B3%CE%AD%CE%BD%CE%B5%CE%B9%CE%BF.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Hospital of Specific Infectious Diseases ', 'Grigoriou Labraki 13 Thessaloniki', 'Hospital');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0018, 40.621345, 22.963845);
+INSERT INTO RATING (PID, STARS) VALUES (0018, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0018, 'http://www.agelioforos.gr/files/Portalistas/Limodon%20nosokomeio%20Thessaloniki.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Museum of Byzantine Culture', 'The founding of the Museum of Byzantine Culture and its official opening in 1994 in Thessaloniki. 
+The most Byzantine city of the modern Greek state, marks the end of a story that had begun long before, just after the city s liberation in 1912.', 'Museum');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0019, 40.623855, 22.955145);
+INSERT INTO RATING (PID, STARS) VALUES (0019, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0019, 'http://www.macedonian-heritage.gr/Museums/Museum_Pictures/Arx_Byz_Thessaloniknhs/Front_view.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Folklife and Ethnological Museum of Macedonia', 'The Folklife and Ethnological Museum of Macedonia explores and studies the traditional
+culture of recent times in the region of northern Greece. It gathers, preserves, safeguards and records the material evidence of that past, making it available to the public for purposes
+of study, instruction and amusement.', 'Museum');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0020, 40.640065, 22.944425);
+INSERT INTO RATING (PID, STARS) VALUES (0020, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0020, 'http://cdn4.vtourist.com/19/6351359-Folklife_and_Ethnological_Museum_of_Macedonia_Thessaloniki.jpg?version=2');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ("Kastra and the Byzantine Walls", "The Kastra (Castle), also called Ano Poli (Upper Town), contains important Byzantine churches and timber-framed, pastel-painted houses with overhanging 
+upper storeys. Panoramic views of the city and gulf are had from the Byzantine Walls ' eastern edge, in the pyrgos (tower). The tower , recently renovated 
+and opened to visitors, is a marvellously atmospheric structure. Ascend it for expansive views.", 'Sight');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0021, 40.642175, 22.949405);
+INSERT INTO RATING (PID, STARS) VALUES (0021, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0021, 'http://www.agelioforos.gr/files/ouzounidis/%CF%80%CE%BF%CF%81%CF%84%CE%B1%CF%81%CE%B1.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ("Roman Agora", "The Agora lies north of Plateia Aristotelous, on Plateia Dikastirion. In the 3rd century BC, Macedonians made it a commercial centre
+and the Romans maintained this function. An English-language placard explains the site, which contains clustered shop walls and mosaic floor remnants. In summer, it hosts the city-sponsored Urban Picnic,
+which livens up the ruins with free food and live music.", 'Sight');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0022, 40.637605, 22.945755);
+INSERT INTO RATING (PID, STARS) VALUES (0022, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0022, 'http://photos.wikimapia.org/p/00/03/29/41/86_big.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Kountourellis Theodoros', 'Odisseos 1 Thessaloniki', 'Pharmacy');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0023, 40.640415,  22.933785);
+INSERT INTO RATING (PID, STARS) VALUES (0023, 3);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0023, 'http://www.grekomania.ru/images/catalog/1052/gallery/23305_Papakonstantinou-11.jpg');
+ 
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Spiridon Tsiakiris & Sia O.E.', 'Megalou Alexandrou 28 Ampelokipoi Thessaloniki', 'Pharmacy');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0024, 40.654855, 22.923695);
+INSERT INTO RATING (PID, STARS) VALUES (0024, 3);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0024, 'https://lh6.googleusercontent.com/-fA9vYgqqlJE/VNpiVKInNQI/AAAAAAAAABc/bJB96Jl9nQw/w350-h362/photo.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Ikaros Antalaktiria Sinalagmatos A.E.-WESTERN UNION', 'Lagada 1 Thessaloniki', 'Money-Exchange');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0025,  40.640845, 22.935235);
+INSERT INTO RATING (PID, STARS) VALUES (0025, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0025, 'http://www.technomag.co.zw/wp-content/uploads/2014/11/WESTERN_UNION_WORLDBRIDGE_YPIRESIES_PLIROMON_AE_fdb4c7d987d04eecb74c3c398c2252c6.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('G.P.K Antalaktiria Sinalagmatos - WESTERN UNION', 'Egnatias 1 Thessaloniki', 'Money-Exchange');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0026,  40.640485, 22.936925);
+INSERT INTO RATING (PID, STARS) VALUES (0026, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0026, 'http://www.vrisko.gr/logos/257046.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Ethniki Trapeza tis Ellados A.E.', 'Ionos Dragoumi 28 & Tsimiski 4 Thessaloniki', 'Bank-ATM');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0027, 40.635475, 22.938955);
+INSERT INTO RATING (PID, STARS) VALUES (0027, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0027, 'http://photos.wikimapia.org/p/00/00/37/30/57_big.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Hsbc Bank PLC', 'Mitropoleos 8Thessaloniki', 'Bank-ATM');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0028, 40.634705, 22.937725);
+INSERT INTO RATING (PID, STARS) VALUES (0028, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0028, 'http://lawanddisorder.org/wp-content/uploads/HSBC-BANK_IMG_0315.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Cafe Mera', 'Aggelaki 10 Thessaloniki, phone number. 2310-220038', 'Cafe-Bar');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0029, 40.629905, 22.953475);
+INSERT INTO RATING (PID, STARS) VALUES (0029, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0029, 'http://www.biscotto.gr/assets/media/PICTURES/vgainw_eksw/bars/483.JPG');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Mikro Londino', 'Filipou 9 Thessaloniki, phone number. 2310-221017', 'Cafe-Bar');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0030, 40.638975, 22.942485);
+INSERT INTO RATING (PID, STARS) VALUES (0030, 5);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0030, 'http://www.biscotto.gr/assets/media/PICTURES_NEW/vgainw_eksw/cafe/36921.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Nea Diagonios', 'Plastira 89 Kalamaria Thessaloniki, phone number. 231-0029085', 'Restaurant');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0031, 40.573445, 22.951035);
+INSERT INTO RATING (PID, STARS) VALUES (0031, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0031, 'http://www.grekomania.ru/images/catalog/818/gallery/16077_Nea-Diagonios-Restaurant-16.jpg');
+
+INSERT INTO PLACE (NAME, DESCRIPTION, TYPE) VALUES ('Frutti di Mare ', 'Komninon 20 Thessaloniki, phone number. 231-0239100', 'Restaurant');
+INSERT INTO LOCATION (PID, LATITUDE, LONGITUDE) VALUES (0032, 40.634385, 22.940905);
+INSERT INTO RATING (PID, STARS) VALUES (0032, 4);
+INSERT INTO PICTURE (PLID, LINK) VALUES (0032, 'http://www.fruttidimare.gr/wp-content/uploads/2014/11/istoriko-kentro.jpg');
 
  
  

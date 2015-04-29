@@ -6,10 +6,14 @@
 <body>
 
 <?php
+// PHP code to save data to PLACE table
+	if(isset($_POST["pname"]) && isset($_POST['pdescription']) && isset($_POST["ptype"]))
+	{
 		require_once 'Connect_DB.php';
     	require_once 'dbHandler.php';
 		$db = new dbHandler();
 		
+		// Retrieve data inserted by the system admin in the insert form and execute the query
 		$pname = $_POST["pname"];
 		$pdescription = $_POST["pdescription"];
 		$ptype = $_POST["ptype"];
@@ -21,9 +25,17 @@
 			die('Invalid query: ' . mysql_error());
 		}
 		else
-		{	
+		{	// Informative message
 			echo "Submission succeeded!!!";
 		}
+	}
+	else
+	{
+		// Informative message
+		echo "An error occurred. Please try again!";
+	}
+	
+	
 ?>
 
 <h1><a href=<?php echo "insertAll.html"; ?>>Insert Data</a></h1>;

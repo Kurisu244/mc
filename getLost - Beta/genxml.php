@@ -1,5 +1,7 @@
 <?php
+// This script is based on a tutorial accessible from: https://developers.google.com/maps/articles/phpsqlajax_v3
 
+// This is a helper function that encodes some special characters in order to be XML friendly.
 function parseToXML($htmlStr)
 {
 	$xmlStr = str_replace('<','&lt;',$htmlStr);
@@ -12,11 +14,12 @@ function parseToXML($htmlStr)
 
 include "connect.php";
 
-$query = $handler->query("SELECT LATITUDE,LONGITUDE,NAME,DESCRIPTION,TYPE,STARS,LINK FROM LOCATION,PLACE,RATING,PICTURE
+//Execute the appropriate query
+$r = $handler->query("SELECT LATITUDE,LONGITUDE,NAME,DESCRIPTION,TYPE,STARS,LINK FROM LOCATION,PLACE,RATING,PICTURE
  WHERE LOCATION.PID = PLACE.PID AND RATING.PID = PLACE.PID AND PICTURE.PLID = PLACE.PID");
-$query->setFetchMode(PDO::FETCH_ASSOC);
+$r->setFetchMode(PDO::FETCH_ASSOC);
  
-if(!$query)
+if(!$r)
 {
   die('Invalid query: ' . mysql_error());
 }
@@ -25,9 +28,10 @@ else
 {
 	header("Content-type: text/xml");
 	
+	//Output the xml using the echo function
 	echo '<markers>';
 	
-	while ($result = $query->fetch())
+	while ($result = $r->fetch())
 	{
 		echo '<marker ';
 		echo 'name="' . parseToXML($result['NAME']) . '" ';

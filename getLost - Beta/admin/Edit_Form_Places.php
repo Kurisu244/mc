@@ -18,7 +18,8 @@
 		$db = new dbHandler();
 		
 		$id = $_GET['id'];
-	
+		
+		// Retrieve specified records from the database in order to be displayed when the edit form opens.
 		$result = $db -> select("PLACE", array('PID'=>$id));
 		
 		while($rows = $result->fetch())
@@ -30,6 +31,7 @@
 		}
 		
       ?>
+	  <!-- Creation of the edit form -->
       <form method="post" action="Edit_Data_Places.php">
 	  
 		<input type="hidden" name="pid" size="4" value="<?php echo $pid?>">

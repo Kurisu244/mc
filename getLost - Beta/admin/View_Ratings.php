@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
+<!-- Display all data from RATING table -->
 <head>
 <title>Data Handling</title>
 </head>
@@ -14,9 +14,12 @@
     <td>
       <table border="1">
       <?php
+	
 		require_once 'Connect_DB.php';
     	require_once 'dbHandler.php';
 		$db = new dbHandler();
+		
+		// Retrieve results from database and display them in a table.
 		
 		$result = $db -> select("RATING", array());	
 		

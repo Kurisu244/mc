@@ -18,8 +18,10 @@
 		$db = new dbHandler();
 		
 		$id = $_GET['id'];
-	
+		
+		// Retrieve specified records from the database in order to be displayed when the edit form opens.
 		$result = $db -> select("PICTURE", array('PLID'=>$id));
+		
 		while($rows = $result->fetch())
 		{
 			$picid = $rows['PICID'];
@@ -28,6 +30,7 @@
 		}
 
       ?>
+	  <!-- Creation of the edit form -->
       <form method="post" action="Edit_Data_Pictures.php">
 	  
 		<input type="hidden" name="picid" size="4" value="<?php echo $picid?>">

@@ -1,0 +1,25 @@
+table 
+{
+  width: 100%;
+  border: 5px solid Rebeccapurple;
+}
+
+th, td 
+{
+  text-align: left; 
+  vertical-align: top; 
+  border: 2px solid;
+  border-collapse: collapse;
+  padding: 0.3em;
+}
+
+body
+{
+    background-color: Lavender;
+}
+
+img
+{
+	width: 30%;
+	heigth: 30%;
+}

@@ -11,8 +11,8 @@ include "connect.php";
 
 if (isset($_GET['lat']) && isset($_GET['lng'])) {
 	
-	$lat = $_GET['lat'];
-	$lng = $_GET['lng'];
+	$lat = strip_tags($_GET['lat']);
+	$lng = strip_tags($_GET['lng']);
 	
 	$query = $handler->query("SELECT PID FROM location
 								WHERE LATITUDE LIKE '$lat' && LONGITUDE LIKE '$lng'");

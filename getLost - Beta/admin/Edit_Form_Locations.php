@@ -18,7 +18,8 @@
 		$db = new dbHandler();
 		
 		$id = $_GET['id'];
-	
+		
+		// Retrieve specified records from the database in order to be displayed when the edit form opens.
 		$result = $db -> select("LOCATION", array('LID'=>$id));
 		
 		while($rows = $result->fetch())
@@ -29,6 +30,7 @@
 			$longitude = $rows['LONGITUDE'];
 		}
       ?>
+	  <!-- Creation of the edit form -->
       <form method="post" action="Edit_Data_Locations.php">
 	  
 	  <input type="hidden" name="lid" size="4" value="<?php echo $lid?>">

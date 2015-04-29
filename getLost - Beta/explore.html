@@ -4,53 +4,35 @@
 		<title>Get Lost...</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta charset="utf-8">
-		<style>
-		html, body, #map
-		{
-			height: 100%;
-			margin: 0px;
-			padding: 0px;
-			width: 100%;
-		}
-		
-		img 
-		{
-			width:100%;
-		}
-		
-		[name = "category"]
-		{
-		   width: auto;
-		   margin-left: 0em;
-		}
-		
-		a
-		{
-			text-decoration: none;
-			color: #000000;
-		}
-
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/explore.css">
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 		<script>
+		// This script is based on a tutorial accessible from: https://developers.google.com/maps/articles/phpsqlajax_v3
+		
+			// This is a function that is invoked when the page loads and when the user selects a radio button. It creates a google map
+			// centered on Thessaloniki and based off a database of places. Content of database is retrieved from XML.
 			function load()
 			{
 				var checked;
-
+				
+				// Check which radio button is selected.
 				for (i=0;i<document.boxes.category.length;i++){
 					if (document.boxes.category[i].checked == true){
 						checked = document.boxes.category[i].id;
 						break;
 					}
 				}
+				
+				// Creation of the google map.
 				var map = new google.maps.Map(document.getElementById("map"), 
 				{
 					center: new google.maps.LatLng(40.626369, 22.948428),
 					zoom: 12
 				});
 				var infoWindow = new google.maps.InfoWindow;
-
+				
+				// Load the XML and retrieve data.
 				downloadUrl("genxml.php", function(data)
 				{
 					var xml = data.responseXML;
@@ -63,11 +45,10 @@
 						var link = markers[i].getAttribute("link");
 						var lat = parseFloat(markers[i].getAttribute("lat"));
 						var lng = parseFloat(markers[i].getAttribute("lng"));
-						var point = new google.maps.LatLng(
-							lat,
-							lng);
+						var point = new google.maps.LatLng(lat,lng);
 						var content = "<b>" + name + "</b> <br/>" + "<i>" + type + "</i> <br/>" + description +  "<img src=" + link + ">" + 
 						'<br><a href="generatepage.php?lat='+lat+'&lng='+lng+'">Get me to full page</a>';
+						// Creation of markers.
 						if(checked == type || checked == "All")
 						{
 							var marker = new google.maps.Marker(
@@ -75,14 +56,13 @@
 								map: map,
 								position: point,
 							});
-						
+							// Creation of info windows.
 							bindInfoWindow(marker, map, infoWindow, content);
 						}
 					}
 				});
-				myFunction()
 			}
-		
+			// This function creates appropriate info windows on the map when the user clicks on a marker.
 			function bindInfoWindow(marker, map, infoWindow, content) 
 			{
 				google.maps.event.addListener(marker, 'click', function() 
@@ -92,7 +72,10 @@
 					infoWindow.open(map, marker);
 				});
 			}
-
+			
+			// Load the XML file using the XMLHttpRequest object which is the base of AJAX technology.
+			// url: specifies the path to the  php script that generates the XML file.
+			// callback: is the function called when the XML is returned to the javascript.
 			function downloadUrl(url, callback) 
 			{
 				var request = window.ActiveXObject ?
@@ -119,9 +102,10 @@
 		<body onload="load()">
 		<header id="header">
 				<h1><a href="index.html">Get Lost...</a> by MicroLimn SoftWorks</h1>
+				<h3>Choose the places you want to explore:<br></h3> 
 				<form name = "boxes">
 				<label>
-				<input type="radio" id="Hotel" name = "category" onclick = load()> Hotels
+				<input type="radio" id="Hotel" name = "category" onclick = load()> Hotels      
 				</label>
 				<label>
 				<input type="radio" id="Hospital" name = "category" onclick = load()> Hospitals

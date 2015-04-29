@@ -6,10 +6,14 @@
 <body>
 
 <?php
+// PHP code to save data to PICTURE table
+	if(isset($_POST["pid_p"]) && isset($_POST["url"]))
+	{
 		require_once 'Connect_DB.php';
     	require_once 'dbHandler.php';
 		$db = new dbHandler();
 		
+		// Retrieve data inserted by the system admin in the insert form and execute the query
 		$pid_p = $_POST["pid_p"];
 		$url = $_POST["url"];
 	
@@ -21,8 +25,15 @@
 		}
 		else
 		{
+			// Informative message
 			echo "Submission succeeded!!!";
 		}
+	}
+	else
+	{
+		// Informative message
+		echo "An error occurred. Please try again!";
+	}
 
 ?>
 <h1><a href=<?php echo "insertAll.html"; ?>>Insert Data</a></h1>;
